@@ -1,0 +1,7 @@
+C:\Users\B3\Documents\SharpDevelop Projects\WorkWithImages\WorkWithImages\obj\Debug\WorkWithImages.csprojResolveAssemblyReference.cache
+C:\Users\B3\Documents\SharpDevelop Projects\WorkWithImages\WorkWithImages\obj\Debug\WorkWithImages.MainForm.resources
+C:\Users\B3\Documents\SharpDevelop Projects\WorkWithImages\WorkWithImages\obj\Debug\WorkWithImages.csproj.GenerateResource.Cache
+C:\Users\B3\Documents\SharpDevelop Projects\WorkWithImages\WorkWithImages\bin\Debug\WorkWithImages.exe
+C:\Users\B3\Documents\SharpDevelop Projects\WorkWithImages\WorkWithImages\bin\Debug\WorkWithImages.pdb
+C:\Users\B3\Documents\SharpDevelop Projects\WorkWithImages\WorkWithImages\obj\Debug\WorkWithImages.exe
+C:\Users\B3\Documents\SharpDevelop Projects\WorkWithImages\WorkWithImages\obj\Debug\WorkWithImages.pdb
