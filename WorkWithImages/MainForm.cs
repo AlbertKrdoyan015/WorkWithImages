@@ -29,10 +29,10 @@ namespace WorkWithImages
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-			textBox1.Text = @"C:\Users\User\Desktop\Folder\0.jpg";
+			textBox1.Text = @"C:\Users\User\Desktop\Folder\miniImage1.jpg";
 			textBox2.Text = @"C:\Users\User\Desktop\Folder\miniImage.jpg";
-			textBox1.Enabled = textBox2.Enabled = button1.Enabled = false;
-			//button2.Enabled = false;
+			
+			
 			
 		}
 		
@@ -66,7 +66,6 @@ namespace WorkWithImages
 			Bitmap p2;
 			List<Color> colors = new List<Color>();
 			progressBar1.Maximum = p.Height;
-			progressBar2.Maximum = p.Width;
 			
 			for(int i = 0; i < p.Height; ++i){
 				progressBar1.Value = i + 1;
@@ -78,15 +77,17 @@ namespace WorkWithImages
 			colors.Sort(SortByB);
 			colors.Sort(SortByG);
 			colors.Sort(SortByR);
-			
-			
-			
+						
 			p2 = new Bitmap(colors.Count, 1);
+
 			for(int i = 0; i < colors.Count; ++i){
 				p2.SetPixel(i, 0, colors[i]);
 			}
 			
 			p2.Save(textBox2.Text);
+			
+			progressBar1.Value = 0;
+			MessageBox.Show("Progerss' end...");
 		}
 		
 		bool IsColorFromArrayElseAddIt(ref List<Color> list, Color item){		
@@ -129,5 +130,65 @@ namespace WorkWithImages
 	        else 
 	            return -1;
 	    }
+		
+		void Button3Click(object sender, EventArgs e)
+		{
+			Bitmap p1, p2, final;
+			p1 = new Bitmap(textBox1.Text);
+			p2 = new Bitmap(textBox2.Text);
+			List<Color> colors = new List<Color>();
+			colors.Add(Color.White);
+			bool _add = true;
+			
+			for(int i = 0; i < p1.Width; ++i){
+				_add = true;
+				for(int j = 0; j < p2.Width; ++j){
+					if(p2.GetPixel(j, 0) == p1.GetPixel(i, 0)){
+						_add = false;
+						j = p2.Width;
+					}
+				}
+				if(_add){
+					colors.Add(p1.GetPixel(i, 0));
+				}
+			}
+			
+			final = new Bitmap(colors.Count, 1);
+			for(int i = 0; i < colors.Count; ++i){
+				final.SetPixel(i, 0, colors[i]);
+			}
+			
+			final.Save(@"C:\Users\User\Desktop\Folder\final.jpg");
+		}
+		
+		void Button4Click(object sender, EventArgs e)
+		{
+			Bitmap p1 = new Bitmap(textBox1.Text);
+			progressBar1.Maximum = p1.Height;
+			progressBar1.Value = 0;
+			
+			for(int i = 0; i < p1.Height; ++i){
+				progressBar2.Value = 0;
+				for(int j = 0; j < p1.Width; ++j){
+					DelFromP1(i, j, p1);
+				}
+				progressBar1.Value = i + 1;
+			}
+			
+			progressBar1.Value = 0;
+			p1.Save(@"C:\Users\User\Desktop\Folder\finalpick.jpg");
+		}
+		
+		void DelFromP1(int i, int j, Bitmap p){
+			Bitmap p2 = new Bitmap(textBox2.Text);
+			Color col = p.GetPixel(j, i);
+			
+			for(int k = 0; k < p2.Width; ++k){
+				if(col == p2.GetPixel(k, 0)){
+					p.SetPixel(j, i, Color.White);
+					return;
+				}
+			}
+		}
 	}
 }
