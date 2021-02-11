@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace WorkWithImages
 {
@@ -28,10 +29,11 @@ namespace WorkWithImages
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-			textBox1.Text = @"C:\Users\B3\Desktop\Qimia2\0.jpg";
-			textBox2.Text = @"C:\Users\B3\Desktop\Qimia3\miniImage.jpg";
+			textBox1.Text = @"C:\Users\User\Desktop\Folder\0.jpg";
+			textBox2.Text = @"C:\Users\User\Desktop\Folder\miniImage.jpg";
 			textBox1.Enabled = textBox2.Enabled = button1.Enabled = false;
-			button2.Enabled = false;
+			//button2.Enabled = false;
+			
 		}
 		
 		void Button1Click(object sender, EventArgs e)
@@ -63,8 +65,11 @@ namespace WorkWithImages
 			Bitmap p = new Bitmap(textBox1.Text);
 			Bitmap p2;
 			List<Color> colors = new List<Color>();
+			progressBar1.Maximum = p.Height;
+			progressBar2.Maximum = p.Width;
 			
 			for(int i = 0; i < p.Height; ++i){
+				progressBar1.Value = i + 1;
 				for(int j = 0; j < p.Width; ++j){
 					IsColorFromArrayElseAddIt(ref colors, p.GetPixel(j, i));
 				}
