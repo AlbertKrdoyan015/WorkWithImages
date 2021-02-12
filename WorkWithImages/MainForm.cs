@@ -29,7 +29,7 @@ namespace WorkWithImages
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-			textBox1.Text = @"C:\Users\User\Desktop\Folder\miniImage1.jpg";
+			textBox1.Text = @"C:\Users\User\Desktop\f3\f3_page-0001.jpg";
 			textBox2.Text = @"C:\Users\User\Desktop\Folder\miniImage.jpg";
 			
 			
@@ -167,16 +167,51 @@ namespace WorkWithImages
 			progressBar1.Maximum = p1.Height;
 			progressBar1.Value = 0;
 			
-			for(int i = 0; i < p1.Height; ++i){
-				progressBar2.Value = 0;
-				for(int j = 0; j < p1.Width; ++j){
-					DelFromP1(i, j, p1);
-				}
-				progressBar1.Value = i + 1;
+			int i = 0;
+			
+			object[] obj;
+			bool[] end = new bool[5]{false, false, false, false, false};
+			
+			for(; i < 5; ++i){
+				obj =  new object[6]{0, (p1.Height/5)*i, p1.Width, (p1.Height/5)*(i + 1), p1, end[i]};
+				deletePart(ref obj);
 			}
+			
+//			int cc = 0;
+//			while(true){
+//				cc = 0;
+//				for(int j = 0; j < 5; ++j){
+//					if(end[i] == true){
+//						++cc;
+//					}
+//				}
+//				if(cc == 5){
+//					break;
+//				}
+//				progressBar1.Value = proc;
+//			}
 			
 			progressBar1.Value = 0;
 			p1.Save(@"C:\Users\User\Desktop\Folder\finalpick.jpg");
+		}
+		
+		int proc = 0;
+		
+		void deletePart(ref object[] obj){
+			int st_x = Convert.ToInt32(obj[0]), st_y = Convert.ToInt32(obj[1]), en_x = Convert.ToInt32(obj[2]), en_y = Convert.ToInt32(obj[3]);
+			Bitmap p1 = (Bitmap)obj[4];
+				
+			for(int i = st_y; i < en_y; ++i){
+				for(int j = st_x; j < en_x; ++j){
+//					proc += 1;
+					progressBar1.Value = i + 1;
+					if(p1.GetPixel(j, i) != Color.White){
+						DelFromP1(i, j, p1);
+					}
+				}
+			}
+			
+			obj[5] = true;
 		}
 		
 		void DelFromP1(int i, int j, Bitmap p){
