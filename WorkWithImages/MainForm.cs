@@ -29,8 +29,8 @@ namespace WorkWithImages
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-			textBox1.Text = @"C:\Users\B3\Desktop\Qimia2\0.jpg";
-			textBox2.Text = @"C:\Users\B3\Desktop\Qimia3\miniImage.jpg";
+			textBox1.Text = @"C:\Users\User\Desktop\f3\f3_page-0001.jpg";
+			textBox2.Text = @"C:\Users\User\Desktop\Folder\miniImage.jpg";
 			
 			
 			
@@ -158,7 +158,8 @@ namespace WorkWithImages
 				final.SetPixel(i, 0, colors[i]);
 			}
 			
-			final.Save(@"C:\Users\User\Desktop\Folder\final.jpg");
+			final.Save(@"C:\Users\User\Desktop\f3\final.jpg");
+			
 		}
 		
 		static bool[] end = new bool[5]{false, false, false, false, false};
@@ -180,58 +181,38 @@ namespace WorkWithImages
 				progressBar1.Value = _i + 1;
 			}
 			
-			for(int _i = 0; _i < p2.Height; ++_i){
+			for(int _i = 0; _i < p2.Width; ++_i){
 				pic2.Add(p2.GetPixel(_i, 0));
 			}
 			
-	//		MessageBox.Show("End input");
 			progressBar1.Value = 0;
-			
 			progressBar1.Maximum = p1.Height;
-			int i = 0;
 			
-			object[] obj = new object[5];
+			object[] obj;
 			
-			Thread[] t = new Thread[5];
-			
-			for(i = 0; i < 5; ++i){
+			for(int i = 0; i < 5; ++i){
 				obj =  new object[7]{0, (pic1.Count/5)*i, pic1[0].Count, (pic1.Count/5)*(i + 1), pic1, pic2, i};
-				deletePart(ref obj);
-//				t[i] = new Thread( () => deletePart(ref obj));
-//				t[i].Start();
+				deletePart(ref obj, ref p1);
 			}
 			
-		//	MessageBox.Show("End proc");
 			progressBar1.Value = 0;
 			
-			for(int _i = 0; _i < p1.Height; ++_i){
-				for(int j = 0; j < p1.Width; ++j){
-					p1.SetPixel(j, i, pic1[i][j]);
-				}
-				progressBar1.Value = _i + 1;
-			}
-			
-			MessageBox.Show("End output");
-			
 			progressBar1.Value = 0;
-			p1.Save(@"C:\Users\B3\Desktop\Qimia3\finalpick.jpg");
+			p1.Save(@"C:\Users\User\Desktop\f3\final.jpg");
 		}
 		
-		void deletePart(ref object[] obj){
+		void deletePart(ref object[] obj, ref Bitmap p){
 			int st_x = Convert.ToInt32(obj[0]), st_y = Convert.ToInt32(obj[1]), en_x = Convert.ToInt32(obj[2]), en_y = Convert.ToInt32(obj[3]);
 			
 			List<List<Color>> lc = (List<List<Color>>) obj[4];
 						
 			for(int i = st_y; i < en_y; ++i){
 				for(int j = st_x; j < en_x; ++j){
-//					proc += 1;
 					progressBar1.Value = i + 1;
-//					if(p1.GetPixel(j, i) != Color.White){
-//						DelFromP1(i, j, p1);
 					
-					if(lc[i][j] != Color.White){
+					if(lc[i][j] != Color.FromArgb(255, 255, 255, 255)){
 						if(DelFromP1(lc[i][j], obj[5])){
-							lc[i][j] = Color.White;
+							p.SetPixel(j, i, Color.White);
 						}
 					}
 				}
