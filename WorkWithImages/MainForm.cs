@@ -32,7 +32,7 @@ namespace WorkWithImages
 			textBox1.Text = @"C:\Users\User\Desktop\f3\f3_page-0001.jpg";
 			textBox2.Text = @"C:\Users\User\Desktop\Folder\miniImage.jpg";
 			
-			
+			button4.Enabled = false;
 			
 		}
 		
@@ -166,12 +166,14 @@ namespace WorkWithImages
 		
 		void Button4Click(object sender, EventArgs e)
 		{
-			Bitmap p1 = new Bitmap(textBox1.Text);
+			Bitmap p1 = new Bitmap(textBox1.Text + sender.ToString() + ".jpg");
 			Bitmap p2 = new Bitmap(textBox2.Text);
 			List<List<Color>> pic1 = new List<List<Color>>();
 			List<Color> pic2 = new List<Color>();
 			progressBar1.Maximum = p1.Height;
 						
+			label4.Text = "Proc: " + sender.ToString();
+			
 			for(int _i = 0; _i < p1.Height; ++_i){
 				for(int j = 0; j < p1.Width; ++j){
 					pic2.Add(p1.GetPixel(j, _i));
@@ -198,7 +200,7 @@ namespace WorkWithImages
 			progressBar1.Value = 0;
 			
 			progressBar1.Value = 0;
-			p1.Save(@"C:\Users\User\Desktop\f3\final.jpg");
+			p1.Save(@"C:\Users\B3\Desktop\Qimia3\" + sender.ToString() + ".jpg");
 		}
 		
 		void deletePart(ref object[] obj, ref Bitmap p){
@@ -229,6 +231,13 @@ namespace WorkWithImages
 				}
 			}
 			return false;
+		}
+		
+		void Button5Click(object sender, EventArgs e)
+		{
+			for(int i = 0; i < 189; ++i){
+				Button4Click(i, null);
+			}
 		}
 	}
 }

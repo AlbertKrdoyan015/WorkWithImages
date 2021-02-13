@@ -42,12 +42,11 @@ namespace WorkWithImages
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
-			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.progressBar1 = new System.Windows.Forms.ProgressBar();
-			this.progressBar2 = new System.Windows.Forms.ProgressBar();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
+			this.button5 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -100,17 +99,9 @@ namespace WorkWithImages
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.Button2Click);
 			// 
-			// label3
-			// 
-			this.label3.Location = new System.Drawing.Point(13, 230);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(100, 23);
-			this.label3.TabIndex = 7;
-			this.label3.Text = "Process 2:";
-			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(13, 205);
+			this.label4.Location = new System.Drawing.Point(14, 234);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(58, 23);
 			this.label4.TabIndex = 6;
@@ -118,18 +109,11 @@ namespace WorkWithImages
 			// 
 			// progressBar1
 			// 
-			this.progressBar1.Location = new System.Drawing.Point(77, 198);
+			this.progressBar1.Location = new System.Drawing.Point(78, 227);
 			this.progressBar1.Name = "progressBar1";
 			this.progressBar1.Size = new System.Drawing.Size(544, 23);
 			this.progressBar1.Step = 1;
 			this.progressBar1.TabIndex = 8;
-			// 
-			// progressBar2
-			// 
-			this.progressBar2.Location = new System.Drawing.Point(77, 227);
-			this.progressBar2.Name = "progressBar2";
-			this.progressBar2.Size = new System.Drawing.Size(544, 23);
-			this.progressBar2.TabIndex = 9;
 			// 
 			// button3
 			// 
@@ -151,16 +135,25 @@ namespace WorkWithImages
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.Button4Click);
 			// 
+			// button5
+			// 
+			this.button5.Location = new System.Drawing.Point(13, 121);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(404, 23);
+			this.button5.TabIndex = 12;
+			this.button5.Text = "Goo";
+			this.button5.UseVisualStyleBackColor = true;
+			this.button5.Click += new System.EventHandler(this.Button5Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(634, 262);
+			this.Controls.Add(this.button5);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
-			this.Controls.Add(this.progressBar2);
 			this.Controls.Add(this.progressBar1);
-			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
@@ -173,12 +166,11 @@ namespace WorkWithImages
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.ProgressBar progressBar2;
 		private System.Windows.Forms.ProgressBar progressBar1;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.TextBox textBox2;
